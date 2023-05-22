@@ -1,38 +1,63 @@
-.App {
-  text-align: center;
+body{
+  height:100vh;
+  width:100%;
+  background: hsla(219, 79%, 40%, 1);
+
+  background: linear-gradient(315deg, hsla(219, 79%, 40%, 1) 0%, hsla(52, 100%, 86%, 1) 100%);
+
+  background: -moz-linear-gradient(315deg, hsla(219, 79%, 40%, 1) 0%, hsla(52, 100%, 86%, 1) 100%);
+
+  background: -webkit-linear-gradient(315deg, hsla(219, 79%, 40%, 1) 0%, hsla(52, 100%, 86%, 1) 100%);
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#154DB5", endColorstr="#FFF5B6", GradientType=1 );
+  
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App{
+  display:flex;
+  flex-direction:row;
+  gap:13rem;
+  
+  padding:6rem;
+}
+.map path:hover {
+  fill: rgba(38, 228, 20, 0.555); /* Change the color to your desired hover color */
+  cursor: pointer; /* Optional: Change the cursor style on hover */
+  box-shadow:2px 4px 10px 2px rgb(0, 0, 0);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.map{
+  
+  background-color:rgba(255, 255, 255, 0);
+  fill:rgba(59, 5, 57, 0.164);
+  
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.city-name{
+  color:#6cf21e;
 }
 
-.App-link {
-  color: #61dafb;
+.data-panel{
+  width:30rem;
+  height:30rem;
+  background-color:white;
+  border-radius:20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.results{
+  width:30%;
+  height:40rem;
+  background-color:white;
+  border-radius:20px;
+}
+
+.summar-results{
+  display:flex;
+  flex-direction:column;
+}
+
+.monthly-results{
+  display:flex;
+  flex-direction:row;
 }
