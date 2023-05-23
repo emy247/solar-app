@@ -11,45 +11,189 @@ body{
 
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#154DB5", endColorstr="#FFF5B6", GradientType=1 );
   
-  
+  font-family: 'Mukta', sans-serif;
 }
 
 .App{
   display:flex;
   flex-direction:row;
-  gap:13rem;
-  
-  padding:6rem;
+  gap:6rem;
+  padding:6rem 10rem;
+  margin:0 auto;
 }
 .map path:hover {
-  fill: rgba(38, 228, 20, 0.555); /* Change the color to your desired hover color */
+  fill: #fa4b0bfa; /* Change the color to your desired hover color */
   cursor: pointer; /* Optional: Change the cursor style on hover */
   box-shadow:2px 4px 10px 2px rgb(0, 0, 0);
 }
-
 .map{
-  
   background-color:rgba(255, 255, 255, 0);
   fill:rgba(59, 5, 57, 0.164);
-  
+  width:90vh;
 }
 
-.city-name{
-  color:#6cf21e;
-}
 
 .data-panel{
+  
   width:30rem;
-  height:30rem;
+  height:40rem;
   background-color:white;
   border-radius:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
+.fas{
+  color:#FF4500;
+  margin-top:2rem;
+}
+.location{
+  
+  font-weight:bolder;
+  font-size:30px;
+  margin-left:0.5rem;
+}
+
+.city{
+  font-size:28px; 
+}
+
+.pick-message{
+  font-style:italic;
+  color:rgb(236, 120, 74);
+  font-size:16px;
+  margin-bottom:1.3rem;
+  
+  
+}
+.peakpower{
+  margin-top:2rem;
+  margin-bottom:0.5rem;
+}
+.custom-inputs{
+  
+  position: absolute;
+  bottom:30%;
+  margin-left:16.3rem;
+  display:flex;
+  flex-direction:column;
+  transition:1s ease-in-out;
+}
+
+.azimuth{
+  margin-left:2rem;
+}
+
+.inclination{
+  margin-left:1rem;
+}
+
+.user-input{
+  width:3rem;
+  border:0 solid;
+  border-bottom:2px solid #FF4500;
+  font-family: 'Mukta', sans-serif;
+  font-size:21px;
+  padding:0px;
+  height:1.2rem;
+  font-weight:bolder;
+  text-align:center;
+}
+
+.description{
+  width:20rem;
+  font-size:16px;
+  font-weight:lighter;
+  color:gray;
+  text-align:center;
+  margin-bottom:1rem;
+
+}
+
+.option-button{
+  border:0;
+  background-color:rgb(226, 226, 226);
+  margin-left:1rem;
+  font-family: 'Mukta', sans-serif;
+  font-size:18px;
+  padding:0.4rem 1.3rem;
+  color:rgb(53, 53, 53);
+  
+  transition:0.2s ease-in-out;
+}
+.option-button:hover{
+  background-color:rgb(226, 226, 226);
+  color:rgb(53, 53, 53);
+  cursor:pointer;
+  box-shadow:0px 3px 7px 1px #e9a187;
+}
+img{
+  height:13rem;
+  width:auto;
+}
+.show-results{
+  position: absolute;
+  bottom:27%;
+  transform: translateY(100%);
+  border:0;
+  background-color:#FF4500;
+  margin-left:1rem;
+  font-family: 'Mukta', sans-serif;
+  font-size:18px;
+  padding:0.4rem 1.3rem;
+  color:white;
+  transition:0.2s ease-in-out;
+  box-shadow:0px 3px 7px 1px #e9a187;
+  
+}
+.show-results:hover{
+  background-color:#ce3304;
+  color:white;
+  cursor:pointer;
+  box-shadow:0px 0px 0px 0px #e9a187;
+}
+
+.loader {
+  
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid #FFF;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-bottom: 4px solid #FF3D00;
+  border-left: 4px solid transparent;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
 .results{
   width:30%;
   height:40rem;
   background-color:white;
   border-radius:20px;
+  
+  
+ 
 }
 
 .summar-results{

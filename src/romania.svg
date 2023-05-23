@@ -100,14 +100,14 @@
  </circle>
 
   <text className="city-name" x="180" y="480" font-family="Arial" font-size="18px" letter-spacing="2" >
-    Timis
+    
   </text>
 
   <text className="city-name" x="240" y="380" font-family="Arial" font-size="18px" letter-spacing="2" >
-    Cluj-Napoca
+    
   </text>
 
   <text className="city-name" x="180" y="480" font-family="Arial" font-size="18px" letter-spacing="2" cursor="pointer" id="CarasSeverin">
-    Timis
+   
   </text>
 </svg>

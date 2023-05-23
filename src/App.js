@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {ReactComponent as Romania} from './romania.svg';
 import './App.css';
-
+import solar_panel from './media/solar-panel.png';
 
 
 function App() {
@@ -18,6 +18,7 @@ const [optimal, setOptimal]=useState(true);
 const [custom, setCustom]=useState(false);
 const [showWarning, setShowWarning]=useState(false);
 const [showWarning2, setShowWarning2]=useState(false);
+const [loading, setLoading]=useState(false);
 
 const [monthly,setMonthly]=useState([]);
 const [annual,setAnnual]=useState('');
@@ -27,36 +28,30 @@ const url = `http://localhost:5000/api/data/${city}/${peakpower}/${optimalInclin
 
 async function fetchData() {
   try {
+    setLoading(true);
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error('Network response was not OK');
     }
     const data = await response.json();
-
    
    console.log(data);
    const annual_energy=data.outputs.totals.fixed.E_y;
    const slope=data.inputs.mounting_system.fixed.slope.value;
    const azimuth=data.inputs.mounting_system.fixed.azimuth.value;
-
    const monthlyList=data.outputs.monthly.fixed;
-  
-   console.log(monthlyList)
+    
    setAnnual(annual_energy);
    setAngle(slope);
    setAspect(azimuth);
    setMonthly(monthlyList);
 
-
   } catch (error) {
     console.error(error);
   }
-
-
-  
+  setLoading(false);
 }
-console.log('annual',annual)
-console.log('monthly',monthly)
+
 const handleSelect=(event)=>{
   if(event.target.id)
   {setCity(event.target.id);
@@ -64,7 +59,7 @@ const handleSelect=(event)=>{
     const lastElement=document.getElementById(lastCityId);
     const element = document.getElementById(event.target.id);
   
-    element.style.fill = 'rgba(38, 228, 20, 0.555)';
+    element.style.fill = '#fa4b0bfa';
     lastElement.style.fill='rgba(59, 5, 57, 0.164)';
 
     setLastCityId(event.target.id);
@@ -76,8 +71,14 @@ const handleInputs = (event) => {
   const { name, value } = event.target;
 
   if (name === 'peakpower') {
-    setPeakpower(parseFloat(value));
-  } 
+    if (value === '' || isNaN(value)){
+      setPeakpower('');
+    }
+    else
+    {
+      setPeakpower(parseFloat(value));
+    }
+  }
    else if (name === 'angle-input') {
     setAngle(value);
   } else if (name === 'aspect-input') {
@@ -85,10 +86,7 @@ const handleInputs = (event) => {
   }
 };
 
-
-  
-
-  const handleCustom=()=>{
+const handleCustom=()=>{
   setCustom(true);
   setOptimal(false);
   setOptimalInclination('0')
@@ -103,13 +101,16 @@ const handleOptimal=()=>{
 }
 
 const handleShow=async()=>{
-  if(peakpower>0&&city!='')
-  {setShow(true)
-   await fetchData();}
 
+  if(peakpower>0&&city!=''){
+   setShow(true)
+   await fetchData();
+  }
   else if(peakpower===0&&city==='')
-  {setShowWarning(true)
-   setShowWarning2(true)}
+  {
+   setShowWarning(true)
+   setShowWarning2(true)
+  }
   else if(peakpower===0)
   setShowWarning(true)
   else if(city==='')
@@ -171,46 +172,66 @@ const Results=()=>{
   )
 }
 
+const Loading=()=>{
+  return <span class="loader"></span>
+}
  console.log('peak',peakpower)
 
   return (
     <div className="App">
         <Romania className="map" onClick={handleSelect}/>
-        {show?<Results/>:
+        {show&&!loading?<Results/>:
           (<div className="data-panel">
-            
-            <span className="city">Location:{city?<span>{city}, Romania</span>:'Pick a location on map'}</span>
+          <div>
+          <i class='fas fa-map-marker-alt' style={{ fontSize: '32px' }}></i>
+          <span className="location">Location</span>
+          </div>
+          {city?<span className="city">{city}, Romania</span>:<span className="pick-message"> Pick a location on map!</span>}
+          <span className="description">The location will be used to estimate the annual sun exposure (solar radiation).</span>
 
-            <span>Installed peak PV power[kW]:</span>
-            <input className="peakpower" type="text"
+          <div className="optimal-custom">
+              <button className="option-button" onClick={handleCustom}>Custom</button>
+              <button className="option-button" onClick={handleOptimal}>Optimal</button>
+          </div>
+
+          <span className="peakpower">Installed peak PV power[kW]: <input className="user-input" type="text"
               name="peakpower"
               value={peakpower}
-              onChange={handleInputs}></input>
+              onChange={handleInputs}></input></span>
+          
+          <img src={solar_panel}></img> 
             {
               custom?(
-              <div>
-                  <span>Inclination:</span>
-                  <input className="angle-input" type="text"
+              <div className="custom-inputs">
+                  <span>Inclination:<input className="user-input inclination" type="text"
                         name="angle-input"
                         value={angle}
-                        onChange={handleInputs}></input>
+                        onChange={handleInputs}></input>°</span>
+                        
                   
-                  <span>Azimuth:</span>
-                  <input className="aspect-input" type="text"
+                  <span>Azimuth:<input className="user-input azimuth" type="text"
                         name="aspect-input"
                         value={aspect}
-                        onChange={handleInputs}></input>
+                        onChange={handleInputs}></input>°</span>
+                  
               </div>)
               :
-              ''}
+              ''
+             }
 
-            <div className="optimal-custom">
-              <button className="custom" onClick={handleCustom}>Custom</button>
-              <button className="optimal" onClick={handleOptimal}>Optimal</button>
+            
+
+            <div class="solar-panel-container">
+              <div class="solar-panel">
+              <div class="solar-cells"></div>
+              </div>
             </div>
-            <button className="show-results" onClick={handleShow}>Show</button>
+
+            <button className="show-results" onClick={handleShow}>View results</button>
             {showWarning?<Warning/>:''}
             {showWarning2?<Warning2/>:''}
+            {loading?<Loading/>:''}
+
           </div>)
         }
                   
