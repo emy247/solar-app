@@ -219,14 +219,6 @@ const Loading=()=>{
               ''
              }
 
-            
-
-            <div class="solar-panel-container">
-              <div class="solar-panel">
-              <div class="solar-cells"></div>
-              </div>
-            </div>
-
             <button className="show-results" onClick={handleShow}>View results</button>
             {showWarning?<Warning/>:''}
             {showWarning2?<Warning2/>:''}
