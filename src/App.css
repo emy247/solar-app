@@ -48,6 +48,13 @@ body{
   color:#FF4500;
   margin-top:2rem;
 }
+
+.location-icon{
+  margin-top:5px;
+  width:2.5rem;
+  height:auto;
+  margin-bottom:-0.7rem;
+}
 .location{
   
   font-weight:bolder;

@@ -4,7 +4,8 @@ import './App.css';
 import solar_panel from './media/solar-panel.png';
 import './results.css';
 import sun from './media/sun.png';
-
+import location from './media/location.png';
+import location_energy from './media/location_energy.png';
 
 
 
@@ -183,12 +184,11 @@ const Results=()=>{
     <button className="show-results back" onClick={handleBack}>Back</button>
 
     <div className="location-output">
-        <i className='fas fa-map-marker-alt out' style={{ fontSize: '32px' }}></i>
         <div className="city-output">Location: {city}, Romania</div>
     </div>
 
     <div className="system-output">
-        <i className='fa fa-bolt' style={{ fontSize: '40px' }}></i>
+        <img src={location_energy} className="location-energy-icon"></img>
         <div className="peak-output">System capacity:<span className="peak-value">{peakpower}kW</span></div>
     </div>
     
@@ -267,7 +267,7 @@ const Loading=()=>{
 
            <div className="data-panel">
               <div>
-                <i className='fas fa-map-marker-alt' style={{ fontSize: '32px' }}></i>
+                <img src={location} className="location-icon"></img>
                 <span className="location">Location</span>
               </div>
 

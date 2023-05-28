@@ -20,6 +20,16 @@
     margin-top:3rem;
   }
   
+  .location-energy-icon{
+    position:absolute;
+    top:-3.5rem;
+    left:-2rem;
+    margin-top:5px;
+    width:2.3rem;
+    height:auto;
+    margin-bottom:-0.7rem;
+  }
+
   .location-output{
     position:absolute;
     top:10%;
@@ -149,7 +159,7 @@ circle {
   font-weight:bolder;
 }
 .azi{
-  margin-left:1.5rem;
+  margin-left:0.2rem;
 }
 
 .inc{
