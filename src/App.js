@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {ReactComponent as Romania} from './romania.svg';
 import './App.css';
 import solar_panel from './media/solar-panel.png';
@@ -30,9 +30,7 @@ const [annual,setAnnual]=useState('');
 const [total,setTotal]=useState('0');
 const [maxMonth,setMaxMonth]=useState();
 
-
-
-const url = `http://localhost:5000/api/data/${city}/${peakpower}/${optimalInclination}/${optimalAngles}/${angle}/${aspect}`;
+const url = `https://jelly-iced-parallelogram.glitch.me/api/data/${city}/${peakpower}/${optimalInclination}/${optimalAngles}/${angle}/${aspect}`;
 
 async function fetchData() {
   try {
@@ -80,10 +78,6 @@ if(event.target.value==='0')
  event.target.value='';
 }
 
-const handleAddValue=(event)=>{
-  if(event.target.value==='') 
-  event.target.value='0';
-}
 
 const handleInputs = (event) => {
   const { name, value } = event.target;
@@ -119,7 +113,7 @@ const handleOptimal=()=>{
 
 const handleShow=async()=>{
 
-  if(peakpower>0&&city!=''){
+  if(peakpower>0&&city!==''){
    setShow(true)
    await fetchData();
   }
@@ -189,12 +183,12 @@ const Results=()=>{
     <button className="show-results back" onClick={handleBack}>Back</button>
 
     <div className="location-output">
-        <i class='fas fa-map-marker-alt out' style={{ fontSize: '32px' }}></i>
+        <i className='fas fa-map-marker-alt out' style={{ fontSize: '32px' }}></i>
         <div className="city-output">Location: {city}, Romania</div>
     </div>
 
     <div className="system-output">
-        <i class='fa fa-bolt' style={{ fontSize: '40px' }}></i>
+        <i className='fa fa-bolt' style={{ fontSize: '40px' }}></i>
         <div className="peak-output">System capacity:<span className="peak-value">{peakpower}kW</span></div>
     </div>
     
@@ -221,7 +215,7 @@ const Results=()=>{
     
     
     <div className="panel-animation">
-        <img className="sun" src={sun}></img>
+        <img className="sun" alt="" src={sun}></img>
         <div className="blue-bar" style={barInclination}></div>
         <div className="gray-bar"></div>
         <div className="brown-bar"></div>
@@ -259,7 +253,7 @@ const Results=()=>{
 }
 
 const Loading=()=>{
-  return <span class="loader"></span>
+  return <span className="loader"></span>
 }
 
 
@@ -273,7 +267,7 @@ const Loading=()=>{
 
            <div className="data-panel">
               <div>
-                <i class='fas fa-map-marker-alt' style={{ fontSize: '32px' }}></i>
+                <i className='fas fa-map-marker-alt' style={{ fontSize: '32px' }}></i>
                 <span className="location">Location</span>
               </div>
 
@@ -291,7 +285,7 @@ const Loading=()=>{
                   onChange={handleInputs} onClick={handleRemoveValue}></input>
               </span>
               
-              <img src={solar_panel}></img> 
+              <img src={solar_panel} alt=""></img> 
 
                 {
                   custom?(

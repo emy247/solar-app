@@ -110,18 +110,18 @@
 circle {
     fill:none;
     stroke-width:1.05rem;
-    stroke-dasharray: 440, 0; /* Initial stroke with full circle */
-    stroke-dashoffset: -440; /* Start from the beginning of the circle */
-    stroke: url(#GradientColor); /* Use the defined gradient for the stroke color */
-    animation: circleLoading 2.5s linear forwards; /* Apply the animation */
+    stroke-dasharray: 440, 0;
+    stroke-dashoffset: -440; 
+    stroke: url(#GradientColor); 
+    animation: circleLoading 2.5s linear forwards;
   }
   
   @keyframes circleLoading {
     0% {
-      stroke-dasharray: 0, 440; /* Start with no visible stroke */
+      stroke-dasharray: 0, 440; 
     }
     100% {
-      stroke-dasharray: 440, 0; /* Complete stroke for full circle */
+      stroke-dasharray: 440, 0;
     }
   }
 

@@ -62,6 +62,7 @@ const params={
     fixed: 1
 }
 
+
 function getData(city){
 app.get(`/api/data/${city}/:peakpower/:optimalInclination/:optimalAngles/:angle/:aspect`, async (req, res) => {
   try {
@@ -89,6 +90,6 @@ Object.keys(cities, params).forEach(city => {
     getData(city);
   });
   
-  app.listen(5000, () => {
-    console.log(`Server is running on port 5000`);
+  app.listen(port, serverIP, () => {
+    console.log(`Server running at http://192.168.56.1:5000/`);
   });
