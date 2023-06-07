@@ -90,6 +90,6 @@ Object.keys(cities, params).forEach(city => {
     getData(city);
   });
   
-  app.listen(port, serverIP, () => {
+  app.listen(5000, () => {
     console.log(`Server running at http://192.168.56.1:5000/`);
   });
