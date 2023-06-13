@@ -8,7 +8,6 @@ Solar-app is a web application built with React.js, Node.js, and Express that al
 
 The server will retrieve data from an API provided by the Joint Research Centre (JRC) of the European Commission. Subsequently, the data will be displayed on the client side in the form of charts, enabling users to analyze them.
 
-
 ## Project screenshots
 
 ![localhost_3000_ (19)](https://github.com/emy247/solar-app/assets/82291397/9f2a50e6-33c9-464f-88f6-9c76bf03eef2)
