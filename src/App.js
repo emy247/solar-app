@@ -14,8 +14,8 @@ const [show, setShow]= useState(false);
 const [city,setCity]=useState('');
 const [lastCityId, setLastCityId] =useState('SatuMare')
 const [peakpower,setPeakpower]=useState(0);
-const [angle,setAngle]=useState('0');
-const [aspect,setAspect]=useState('0');
+const [angle,setAngle]=useState(0);
+const [aspect,setAspect]=useState(0);
 const [optimal, setOptimal]=useState(true);
 const [showWarning, setShowWarning]=useState(false);
 const [showWarning2, setShowWarning2]=useState(false);
@@ -71,11 +71,25 @@ const handleInputs = (event) => {
       }
     }
     else if (name === 'angle-input') {
-      setAngle(value);
+      if(value>180)
+        setAngle(180)
+      else if(value<0)
+        setAngle(0)
+      else
+        setAngle(value);
+      
     }else if (name === 'aspect-input') {
-      setAspect(value);
+       if(value>180)
+        setAspect(180)
+      else if(value<0)
+        setAspect(0)
+      else 
+        setAspect(value);
     }
+    console.log(url)
+   
 };
+
 
 const handleOption=(isOptimal)=>{
   setOptimal(isOptimal);

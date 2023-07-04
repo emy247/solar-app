@@ -17,7 +17,8 @@
     top:2%;
     left:50%;
     font-size:32px;
-    margin-top:3rem;
+    margin-top:5rem;
+    transform: translate(-50%, -50%);
   }
   
   .location-energy-icon{
@@ -71,7 +72,8 @@
     position:absolute;
     margin-top:2rem;
     left:50%;
-    bottom:9rem;
+    transform: translate(-50%, -50%);
+    bottom:4rem;
     width:7.5rem;
   }
 
@@ -101,12 +103,13 @@
   }
 
   .annual-energy-output{
-    font-size:22px;
+    font-size:24px;
     position:absolute;
     top:1.3rem;
-    left:1.2rem;
+    left:1.6rem;
     padding:0.7rem;
-    width:5rem;
+    width:4rem;
+    
     text-align:center;
     font-weight:bolder;
   }

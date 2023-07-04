@@ -6,14 +6,11 @@ import location_energy from './media/location_energy.png';
 
 const Results=({data, handleBack, city, peakpower, angle, aspect, optimal})=>{
 
-  const monthNames= ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
-  
-  const panelInclination=90+(optimal?data.inputs.mounting_system.fixed.slope.value : angle);
-
-  const barInclination={'--bar-inclination':`rotate(${panelInclination}deg)`};
-  const maxMonth=Math.max(...data.outputs.monthly.fixed.map(obj => obj.E_m));
-  console.log(maxMonth);
-  
+const monthNames= ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+const panelInclination=90+Number(optimal?data.inputs.mounting_system.fixed.slope.value : angle);
+const barInclination={'--bar-inclination':`rotate(${panelInclination}deg)`};
+const maxMonth=Math.max(...data.outputs.monthly.fixed.map(obj => obj.E_m));
+console.log(maxMonth);
 
  return(
 
@@ -37,7 +34,7 @@ const Results=({data, handleBack, city, peakpower, angle, aspect, optimal})=>{
       <div className="annual-energy-title">Annual PV energy production</div>
       <div className="annual-energy">
         
-        <div className="annual-energy-output">{data.outputs.totals.fixed.E_y} kWh</div>
+        <div className="annual-energy-output"> {data.outputs.totals.fixed.E_y>1000?`${(data.outputs.totals.fixed.E_y/1000).toFixed(2)} MWh` : `${data.outputs.totals.fixed.E_y} kWh`}</div>
         <div className="annual-energy-circle">
           <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="9rem" height="9rem">
             <defs>
@@ -77,7 +74,7 @@ const Results=({data, handleBack, city, peakpower, angle, aspect, optimal})=>{
           return( 
             <div  key={item.month}>
               <div className="month-outputs" style={{'color':'rgba(255, 255, 255, 0)'}}>{item.E_m}kW</div>
-              <div className="month-diagram-empty"><div className="month-output">{item.E_m}kWh</div></div>
+              <div className="month-diagram-empty"><div className="month-output">{item.E_m/10>1000?`${(item.E_m/1000).toFixed(2)}MWh` : `${item.E_m}kWh`}</div></div>
               <div className="month-diagram" style={bar}><p className="month-name">{monthNames[item.month-1]} </p></div>             
             </div>)      
          })}
