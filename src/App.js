@@ -71,8 +71,8 @@ const handleInputs = (event) => {
       }
     }
     else if (name === 'angle-input') {
-      if(value>180)
-        setAngle(180)
+      if(value>90)
+        setAngle(90)
       else if(value<0)
         setAngle(0)
       else
