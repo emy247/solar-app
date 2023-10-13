@@ -40,9 +40,6 @@ const Results = ({
   return (
     <div className="results">
       <div className="results-title">Results analysis</div>
-      <button className="show-results back" onClick={handleBack}>
-        Back
-      </button>
 
       <div className="location-output">
         <div className="city-output">Location: {city}, Romania</div>
@@ -124,34 +121,38 @@ const Results = ({
           </li>
         </ul>
       </div>
+      <div className="diagram-back">
+        <div className="monthly-results">
+          {data.outputs.monthly.fixed.map((item) => {
+            const barHeight = 25 - (item.E_m / maxMonth) * 25;
+            const bar = { "--bar-height": `${barHeight}rem` };
 
-      <div className="monthly-results">
-        {data.outputs.monthly.fixed.map((item) => {
-          const barHeight = 25 - (item.E_m / maxMonth) * 25;
-          const bar = { "--bar-height": `${barHeight}rem` };
+            return (
+              <div key={item.month}>
+                <div
+                  className="month-outputs"
+                  style={{ color: "rgba(255, 255, 255, 0)" }}
+                >
+                  {item.E_m}kW
+                </div>
 
-          return (
-            <div key={item.month}>
-              <div
-                className="month-outputs"
-                style={{ color: "rgba(255, 255, 255, 0)" }}
-              >
-                {item.E_m}kW
-              </div>
-
-              <div className="month-diagram-empty">
-                <div className="month-output">
-                  {item.E_m / 10 > 1000
-                    ? `${(item.E_m / 1000).toFixed(2)}MWh`
-                    : `${item.E_m}kWh`}
+                <div className="month-diagram-empty">
+                  <div className="month-output">
+                    {item.E_m / 10 > 1000
+                      ? `${(item.E_m / 1000).toFixed(2)}MWh`
+                      : `${item.E_m}kWh`}
+                  </div>
+                </div>
+                <div className="month-diagram" style={bar}>
+                  <p className="month-name">{monthNames[item.month - 1]} </p>
                 </div>
               </div>
-              <div className="month-diagram" style={bar}>
-                <p className="month-name">{monthNames[item.month - 1]} </p>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
+        <button className="show-results back" onClick={handleBack}>
+          Back
+        </button>
       </div>
     </div>
   );

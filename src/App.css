@@ -1,6 +1,7 @@
 body {
   height: 100vh;
   width: 100%;
+
   background: hsla(219, 79%, 40%, 1);
 
   background: linear-gradient(
@@ -24,6 +25,10 @@ body {
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#154DB5", endColorstr="#FFF5B6", GradientType=1 );
 
   font-family: "Mukta", sans-serif;
+
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .App {
@@ -159,12 +164,11 @@ img {
   width: auto;
 }
 .show-results {
-  position: absolute;
-  bottom: 24%;
   transform: translateY(100%);
   border: 0;
   background-color: #ff4500;
   margin-left: 1rem;
+  margin-top: 1rem;
   font-family: "Mukta", sans-serif;
   font-size: 18px;
   padding: 0.4rem 1.3rem;
@@ -180,7 +184,7 @@ img {
 }
 
 .loader {
-  margin-top: 1rem;
+  margin-top: 4rem;
   width: 48px;
   height: 48px;
   border-radius: 50%;
