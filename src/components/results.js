@@ -13,19 +13,10 @@ const Results = ({
   optimal,
 }) => {
   const monthNames = [
-    "jan",
-    "feb",
-    "mar",
-    "apr",
-    "may",
-    "jun",
-    "jul",
-    "aug",
-    "sep",
-    "oct",
-    "nov",
-    "dec",
+    "jan", "feb", "mar","apr","may","jun","jul","aug","sep","oct","nov","dec",
   ];
+
+  
   const panelInclination =
     90 +
     Number(optimal ? data.inputs.mounting_system.fixed.slope.value : angle);
