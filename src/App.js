@@ -20,9 +20,15 @@ function App() {
 
   const [data, setData] = useState({});
 
-  const url = `https://jelly-iced-parallelogram.glitch.me/api/data/${city}/${peakpower}/${Number(
+  /*const url = `https://jelly-iced-parallelogram.glitch.me/api/data/${city}/${peakpower}/${Number(
+    optimal
+  )}/${Number(optimal)}/${angle}/${aspect}`;*/
+
+  const url = `http://localhost:5000/api/data/${city}/${peakpower}/${Number(
     optimal
   )}/${Number(optimal)}/${angle}/${aspect}`;
+
+  
 
   async function fetchData() {
     try {

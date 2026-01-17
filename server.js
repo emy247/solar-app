@@ -4,10 +4,7 @@ const cors=require('cors')
 const app = express();
 const cities = require('./cities');
 
-
 app.use(cors());
-
-
 
 const params={
     peakpower: 3.5,
@@ -32,7 +29,7 @@ app.get(`/api/data/${city}/:peakpower/:optimalInclination/:optimalAngles/:angle/
     const optimalInclination=req.params.optimalInclination;
     const optimalAngles=req.params.optimalAngles;
 
-    const response = await fetch(`https://re.jrc.ec.europa.eu/api/v5_2/PVcalc?lat=${lat}&lon=${lon}&peakpower=${peakpower}&loss=14&optimalinclination=${optimalInclination}&optimalangles=${optimalAngles}&outputformat=json&raddatabase=PVGIS-SARAH&pvtechchoice=crystSi&mountingplace=free&fixed=1&angle=${angle}&aspect=${aspect}`);
+    const response = await fetch(`https://re.jrc.ec.europa.eu/api/v5_3/PVcalc?lat=${lat}&lon=${lon}&peakpower=${peakpower}&loss=14&optimalinclination=${optimalInclination}&optimalangles=${optimalAngles}&outputformat=json&raddatabase=PVGIS-SARAH3&pvtechchoice=crystSi&mountingplace=free&fixed=1&angle=${angle}&aspect=${aspect}`);
     if (!response.ok) {
       throw new Error('Network response was not OK');
     }
